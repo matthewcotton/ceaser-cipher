@@ -23,7 +23,7 @@
             <p>This page will encode and decode a string of text with a given key.</p>
         </div>
         <div id="input-area">
-            <form>
+            <form onsubmit="return false">
                 <div class="row">
                     <label for="input-text">Input Text:</label>
                     <textarea id="input-text" rows="5" cols="60" oninput="ceaserCipher()"></textarea>
@@ -39,7 +39,7 @@
                 </div>
                 <br>
                 <label for="key">Key:</label>
-                <input type="number" min="-26" max="26" id="key" value="0" onchange="ceaserCipher()">
+                <input type="number" min="-26" max="26" id="key" value="1" onchange="ceaserCipher()">
                 <br><br>
             </form>
         </div>
