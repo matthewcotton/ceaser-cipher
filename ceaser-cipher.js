@@ -3,14 +3,14 @@
  */
 function ceaserCipher() {
     // Get user inputs
-    let input = document.getElementById("input-text").value.toLowerCase();
+    let input = document.getElementById("input-text").value;
     let enDeCode = getSelectedRadioValue("endecode");
     let key = Number(document.getElementById("key").value);
     let rollKey = Number(document.getElementById("rolling-key").value);
     let output = ""; // Set empty output variable
-    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", 
-    "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", 
-    "v", "w", "x", "y", "z"]; // Declare alphabet
+    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+        "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+        "v", "w", "x", "y", "z"]; // Declare alphabet
     // Alter keys for decode
     if (enDeCode === "decode") {
         key *= -1;
@@ -19,9 +19,9 @@ function ceaserCipher() {
     // Apply the offset (key) and rolling offset (rollKey) to each input char
     for (let i = 0; i < input.length; i++) {
         // Only modify letters in the alphabet
-        if (alphabet.includes( input[i] )) {
-            
-            var index = alphabet.indexOf( input[i] ) + key; // Calc new index value
+        if (alphabet.includes(input[i].toLowerCase())) {
+
+            var index = alphabet.indexOf(input[i].toLowerCase()) + key; // Calc new index value
             key += rollKey; // Calc new rollKey
             // Keep index within range 0 to 25
             while (index > 25) {
@@ -30,7 +30,12 @@ function ceaserCipher() {
             while (index < 0) {
                 index += 26;
             }
-            output += alphabet[index].toUpperCase(); // Add char to output
+            // Keep case of input
+            if (input[i].toUpperCase() === input[i]) {
+                output += alphabet[index].toUpperCase(); // Add uppercase char to output
+            } else {
+                output += alphabet[index]; // Add lowercase char to output
+            }
         }
         // If char is not in the alphabet
         else {
