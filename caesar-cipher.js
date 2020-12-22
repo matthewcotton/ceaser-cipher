@@ -1,7 +1,7 @@
 /**
  * Encodes or decodes a string based on a key and a rolling key
  */
-function ceaserCipher() {
+function caesarCipher() {
     // Get user inputs
     let input = document.getElementById("input-text").value;
     let enDeCode = getSelectedRadioValue("endecode");
